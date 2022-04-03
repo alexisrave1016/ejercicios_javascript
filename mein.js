@@ -1,4 +1,4 @@
-alert('hola alexis')
+//alert('hola alexis')
 let operacion = 5+3
 
 switch(operacion){
@@ -105,3 +105,91 @@ function bucleFor(num){
 }
 
 bucleFor(20);
+
+//-------------array-----------
+const obj ={
+    unArray: new Array(10000)
+}
+  
+function badPerformance(){
+    console.time('ini');
+    for (let i = 0; i < obj.unArray.length; i++) {
+       
+        obj.unArray[i]='hola'
+    }
+    console.timeEnd('ini')
+}
+
+function goodPerformance(){
+    console.time('init');
+    let unArray= obj.unArray;
+    for (let i = 0, longitud=unArray.length; i < longitud; i++) {
+       
+        unArray[i]='hola'
+    }
+    console.timeEnd('init')
+}
+
+function GoodPerformance(){
+    console.time('initi');
+    let unArray= obj.unArray;
+    let longitud=unArray.length
+    for (let i = 0; i < longitud; i++) {
+       
+        unArray[i]='hola'
+    }
+    console.timeEnd('initi')
+}
+
+badPerformance(); // la forma que mas consume tiempo
+goodPerformance();// las forma mas rapida
+GoodPerformance();// esta es rapida
+
+// muy importante , como convertit un objeto en un array para pder utilizar foreach
+
+
+const repuestos= {
+    nombre: 'stop led rh',
+    marca: 'kia',
+    precio: '850.000',
+    ubicacion: 'A1',
+    descripcion: 'stop rio spice led',
+    fecha_compra:'01/02/22'
+
+}
+
+const convertirObetoArray =
+Object.getOwnPropertyNames(repuestos);
+convertirObetoArray.forEach(elem=>{
+    let valor= Object.getOwnPropertyDescriptor(repuestos, elem).value;
+
+    console.log(`la descripcion ${elem} es ${valor}`)
+})
+
+// -----------for in_______________
+
+for (let prop in repuestos) {
+    console.log(`la propieda ${prop} contiene ${repuestos[prop]}`)
+    
+}
+
+const accesorios= {
+    nombre: 'stop led',
+    marca: 'kia',
+    precio: '1.850.000',
+    ubicacion: 'A2',
+    descripcion: 'stop sportage ql led',
+    fecha_compra:'02/03/22'
+
+}
+
+let Marcas = 'marca';
+console.log(accesorios[Marcas])
+
+//----------operacion------------
+let numeroAleatorio = (Math.random()*100).toFixed(0)
+//esto da un numero aleatorio de o a 100, debe de ser de esta forma 
+console.log(numeroAleatorio)
+
+let a= 3.5555555.toFixed(2)
+console.log(a)
