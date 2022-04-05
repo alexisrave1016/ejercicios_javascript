@@ -193,3 +193,111 @@ console.log(numeroAleatorio)
 
 let a= 3.5555555.toFixed(2)
 console.log(a)
+let b= [3,6,10,30,22]
+b.sort()
+console.log(b)
+
+let bb= [1,4,3,6,9,2,8]
+bb.sort()
+console.log(bb)
+
+const post =[
+    {
+        id:1,
+        title:'mi primer post',
+        tags:['javascript,webdeveloper'],
+        precio:'15.000',
+        
+    },
+    {
+        
+        id:2,
+        title:'mi segundo post',
+        tags:['javascript,webdeveloper','react'],
+        precio:'17.000',
+            
+        
+    },
+    {
+        
+        id:3,
+        title:'mi tercer post',
+        tags:['javascript,webdeveloper','angular'],
+        precio:'18.000',
+            
+        
+    }
+]
+
+let buscador= post.find(elem=>elem.id==2)
+console.log(buscador)
+//estelo utilizamos para buscar dentro de un array , y el resultado es que nos devuleve todo el objeto que tenga
+//el id que aya metido, o por lo que ayamos buscado, en este caso nos devuelve todo el post 2
+
+ let sacarreducer= post.reduce((todosObjetos,index)=>{
+     return [...todosObjetos, ...index.tags]
+ },[])
+
+ console.log(sacarreducer)
+
+//  si queremos que no se repitan , los que repiten utilizamos set
+
+let sacarreducer1= post.reduce((todosObjetos,index)=>{
+    return Array.from(new Set([...todosObjetos, ...index.tags]))
+},[]) 
+
+console.log(sacarreducer1)
+
+
+//--------------------- 
+
+const aumentar= document.querySelector('.btn-agregar')
+const disminuir= document.querySelector('.btn-disminuir')
+let contador= document.getElementById('span')
+let contadorNumerico= 0
+
+aumentar.addEventListener('click', ()=>{console.log('estoy dando click')
+    contadorNumerico++
+    contador.textContent= contadorNumerico
+})
+
+disminuir.addEventListener('click',()=>{
+    contadorNumerico--
+    contador.textContent=contadorNumerico
+})
+//------------dos formas diferentes de hacer las cosas, una mas limpia que la otra
+//pera las dos son perfectamente fucnionales
+const container = document.querySelector('.container')
+let span= document.getElementById('Span')
+let contadorr=0
+
+container.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('btn-Agregar')){
+        contadorr++
+        span.textContent=contadorr
+    }
+
+    if(e.target.classList.contains('btn-Disminuir')){
+        contadorr--
+        span.textContent=contadorr
+    }
+
+})
+
+const ini = 'hola que tal'
+
+const globalCloud=()=>{
+    const seg= ', como estas'
+
+    const local=()=>{
+        const ter= ', un gusto saludarte'
+        return ini+seg+ter
+
+    }
+    return local
+}
+
+const imprimirResultado= globalCloud()
+console.log(imprimirResultado()+'  soy la forma ideal')
+
+//esta es la mejor forma de llamar una funcion anidada, una funcion dentro de otra funcion
